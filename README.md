@@ -58,35 +58,47 @@ Please see the details of each parameter by:
 
 To analyse ARTIC-Nanopore amplicon sequencing data with your chosen primer scheme. Extracts the reads containing the identified leader-TRS junctions in fasta format for pool 1 of amplicon primers (The ARTIC primer_bed can be found in the "primer_bed" folder):
 
-`perl LeTRS.pl -t 16 -extractfasta -pool 1 -Rtch cDNA -mode nanopore -fa example.fastq.gz -primer_bed path_to_primer_V3.bed -o LeTRS_output`
+```
+perl LeTRS.pl -t 16 -extractfasta -pool 1 -Rtch cDNA -mode nanopore -fa example.fastq.gz -primer_bed path_to_primer_V3.bed -o LeTRS_output
+```
 
 Optional:
 If "-TRSLindependent" option is added, LeTRS will also identify the TRS Leader independent fusion sites in the reads for pool 1 and pool 2 of amplicon primers (The ARTIC primer_bed can be found in the "primer_bed" folder):
 
-`perl LeTRS.pl -t 16 -pool 0 -Rtch cDNA -mode nanopore -TRSLindependent -fa example.fastq.gz -primer_bed path_to_primer_V3.bed -o LeTRS_output` 
+```
+perl LeTRS.pl -t 16 -pool 0 -Rtch cDNA -mode nanopore -TRSLindependent -fa example.fastq.gz -primer_bed path_to_primer_V3.bed -o LeTRS_output
+```
 
 **2. Direct RNA Nanopore sequencing data**
 
 Extracts the reads containing the identified leader-TRS junctions in fasta format:
 
-`perl LeTRS.pl -t 16 -extractfasta -Rtch RNA -mode nanopore -fq example.fastq.gz -o LeTRS_output`
+```
+perl LeTRS.pl -t 16 -extractfasta -Rtch RNA -mode nanopore -fq example.fastq.gz -o LeTRS_output
+```
 
 Optional customized leader-TRS junctions analysis:
 Use SARS-CoV-2 or other coronavirus genomes as a reference, and extract the reads containing the identified leader-TRS junctions in fasta format (the instruction of making a reference_folder could be found in "readme.txt" of "making_reference_folder_example" folder):
 
-`perl LeTRS.pl -t 16 -extractfasta -Rtch cDNA -mode nanopore -fq example.fastq.gz -primer_bed path_to_custom_primer.bed -o LeTRS_output -ref reference_folder`<
+```
+perl LeTRS.pl -t 16 -extractfasta -Rtch cDNA -mode nanopore -fq example.fastq.gz -primer_bed path_to_custom_primer.bed -o LeTRS_output -ref reference_folder
+```
 
 **3. Paired-end Illumina sequencing data**
 
 Extracts the read-pairs containing the identified leader-TRS junctions in fasta format for pool 1 and pool 2 of amplicon primers (the ARTIC primer_bed can be found in the "primer_bed" folder):
 
-`perl LeTRS.pl -t 16 -extractfasta -pool 0 -mode illumina -fq #1.fastq.gz:#2.fastq.gz -primer_bed path_to_primer_V3.bed -o LeTRS_output`
+```
+perl LeTRS.pl -t 16 -extractfasta -pool 0 -mode illumina -fq #1.fastq.gz:#2.fastq.gz -primer_bed path_to_primer_V3.bed -o LeTRS_output
+```
 
 Optional: To analyse customized bam file reads derived from any platform aligned by using a splicing mapping method.
 
-`perl LeTRS.pl -t 16 -extractfasta -mode illumina -bam example.bam -o LeTRS_output`
+```
+perl LeTRS.pl -t 16 -extractfasta -mode illumina -bam example.bam -o LeTRS_output
+```
 
-## Results
+## **Results**
 The results can be found under the "results" folder in output path, with four tables: known_junction.tab, known_junction_details.tab, novel_junction.tab and novel_junction_details.tab.
 
 ### **known_junction.tab**
@@ -109,15 +121,21 @@ The LeTRS output table for details of novel subgenomic mRNA in the sequencing da
 
 If "-TRSLindependent" option is added, LeTRS will also identify the TRS Leader independent fusion sites in the reads.
 
-## Plotting
+## **Plotting**
 There is also a perl script that can plot a diagram for the output of LeTRS.pl.
 
 **Examples:**
 1. Plotting the value in the column of "peak_count" in "known_junction.tab" or "nb_count" in the "novel_junction.tab. "-count 1" indicates the first number of each row in the column and "-count 2" indicates the second number of each row in the column, and so on.
-*perl LeTRS-plot.pl -count 1 -i known_junction.tab*
+
+  ```
+  perl LeTRS-plot.pl -count 1 -i known_junction.tab
+  ```
 
 2. Plotting the value in the column of "peak_peak_count_ratio" in "known_junction.tab" or "count_ratio" in the "novel_junction.tab. "-count 1" indicates the first number of each row in the column and "-count 2" indicates the second number of each row in the column, and so on.
-'*perl LeTRS-plot.pl -ratio 1 -i known_junction.tab*'
+
+  ```
+  perl LeTRS-plot.pl -ratio 1 -i known_junction.tab
+  ```
 
 ## Customized leader-TRS junctions and SARS-CoV-2 or other coronavirus genomes as reference sequences.
 Please the see the "readme.txt" file in the "making_reference_folder_example" folder.
