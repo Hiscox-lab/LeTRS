@@ -1,16 +1,18 @@
 # LeTRS
 
-LeTRS was implemented in Perl programming language, including a main script for identification of leader-TRS junctions and a script for plotting graphs of the results. It accepts fastq files derived from Illumina paired-end and Nanopore cDNA/direct RNA sequencing, and bam files produced by a splicing alignment method with a SARS-CoV-2 genome. By default, LeTRS analyses SARS-CoV-2 by using 10 known leader-TRS junctions and an NCBI reference genome (NC_045512.2), but the user can also provide customized leader-TRS junctions and SARS-CoV-2 or other coronavirus genomes as a reference.
+LeTRS was implemented in Perl programming language, including a main script for identification of leader-TRS junctions and a script for plotting graphs of the results. 
+
+It accepts fastq files derived from Illumina paired-end and Nanopore amplicon/direct RNA sequencing, and bam files produced by a splicing alignment method with a SARS-CoV-2 genome. By default, LeTRS analyses SARS-CoV-2 by using 10 known leader-TRS junctions and an NCBI reference genome (NC_045512.2), but the user can also provide customized leader-TRS junctions and SARS-CoV-2 or other coronavirus genomes as a reference.
 
 ## Installation:
-1. Create an environment with one step
+**1. Create an environment with one step**
 ```
-git clone https://github.com/xiaofengdong83/LeTRS.git
+git clone https://github.com/Hiscox-lab/LeTRS.git
 cd LeTRS
 conda env create -f my_environment.yml
 source activate LeTRS 
 ```
-2. Create an environment step by step
+**2. Create an environment step by step**
 
 Third party dependencies:
   > samtools(>=1.11)
@@ -52,6 +54,32 @@ patchwork
 ## Usage
 
 Please see the details of each parameter by:
+
+```
+Required parameters:
+  -mode             "nanopore" or "illumina" of the input fastq file.
+  -Rtch             "RNA" (direct RNA) or "cDNA" (amplicon cDNA) to indicate the sequencing library for "nanopore" mode.
+  -fq               fastq file (the paired reads can be provide as "#1.fastq.gz:#2.fastq.gz").
+  -primer_bed       amplicon primer bed file is required for "nanopore cDNA" and "illumina" modes.
+  -pool INT         amplicon primer pool is required for "nanopore cDNA" and "illumina" modes, 0 indicates all pools.
+
+Optional parameters:
+  -bam              custom bam can also be provided if the "-fq" dosen't exist.
+  -ref              custom SARS-CoV-2 or other coronavirus reference folder.
+  -extractfasta     to extract the reads contain the identified leader-TRS junctions in fasta format.
+  -TRSLindependent  to find the reads with sgmRNAs with non-canonical leaders.
+  -noguide          this option turns off the known leader-TRS guided alignment.
+  -t/-thread        number of threads, 1 by default.
+  -o                output path, "./" by default.
+  -adjleader INT    leader junction boundary tolerance, +-10 nts by default.
+  -adjTRS INT       TRS junction boundary tolerance, -20 nts to 1 nt ahead the ATG of known orfs by default.
+  -poscutoff INT    postion of leader end cutoff for the novel leader-TRS identification, 80 by default.
+  -covcutoff INT    coverge cutoff for the novel leader-TRS identification, 5 reads/read pairs by default.
+  -ployALoc INT     the position of the first A in ployA tail on the virus genome, auto detection by default.
+  
+  -v/-version       Print version information.
+  -h/-help          Print help message.
+```
 
 ## **Examples:**
 **1. ARTIC Nanopore sequencing data**
