@@ -1,8 +1,9 @@
+
 # LeTRS
 
-LeTRS was implemented in Perl programming language, including a main script for identification of leader-TRS junctions and a script for plotting graphs of the results. 
+LeTRS was implemented in the Perl programming language, including a main script for identification of leader-TRS junctions (LeTRS.pl) and a script for plotting the outputs (LeTRS-plot.pl) 
 
-It accepts fastq files derived from Illumina paired-end and Nanopore amplicon/direct RNA sequencing, and bam files produced by a splicing alignment method with a SARS-CoV-2 genome. By default, LeTRS analyses SARS-CoV-2 by using 10 known leader-TRS junctions and an NCBI reference genome (NC_045512.2), but the user can also provide customized leader-TRS junctions and SARS-CoV-2 or other coronavirus genomes as a reference.
+LeTRS accepts fastq files derived from Illumina paired-end and Nanopore amplicon/direct RNA sequencing, and bam files produced by a splicing alignment method with a SARS-CoV-2 genome. By default, LeTRS analyses SARS-CoV-2 by using 10 known leader-TRS junctions and an NCBI reference genome (NC_045512.2), but the user can also provide customized leader-TRS junctions and SARS-CoV-2 or other coronavirus genomes as a reference.
 
 ## Installation:
 **1. Create an environment with one step**
@@ -15,12 +16,9 @@ source activate LeTRS
 **2. Create an environment step by step**
 
 Third party dependencies:
-  > samtools(>=1.11)
-  > 
-  > hisat2(=2.1.0)
-  > 
-  > minimap2(=2.17)
-  > 
+  > [samtools](http://www.htslib.org/)(>=1.11)
+  > [hisat2](http://daehwankimlab.github.io/hisat2/)(=2.1.0)
+  > [minimap2](https://github.com/lh3/minimap2)(=2.17)
   > [portcullis](https://github.com/maplesond/portcullis)(>=1.1.2)
 
 
