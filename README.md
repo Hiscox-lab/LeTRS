@@ -17,8 +17,11 @@ source activate LeTRS
 
 Third party dependencies:
   > [samtools](http://www.htslib.org/)(>=1.11)
+  > 
   > [hisat2](http://daehwankimlab.github.io/hisat2/)(=2.1.0)
+  > 
   > [minimap2](https://github.com/lh3/minimap2)(=2.17)
+  > 
   > [portcullis](https://github.com/maplesond/portcullis)(>=1.1.2)
 
 
