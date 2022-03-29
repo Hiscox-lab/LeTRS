@@ -1,7 +1,6 @@
-
 # LeTRS
 
-LeTRS was implemented in the Perl programming language, including a main script for identification of leader-TRS junctions (LeTRS.pl) and a script for plotting the outputs (LeTRS-plot.pl) 
+LeTRS was implemented in the Perl programming language, including a main script for the identification of leader-TRS junctions (LeTRS.pl) and a script for plotting the outputs (LeTRS-plot.pl) 
 
 LeTRS accepts fastq files derived from Illumina paired-end and Nanopore amplicon/direct RNA sequencing, and bam files produced by a splicing alignment method with a SARS-CoV-2 genome. By default, LeTRS analyses SARS-CoV-2 by using 10 known leader-TRS junctions and an NCBI reference genome (NC_045512.2), but the user can also provide customized leader-TRS junctions and SARS-CoV-2 or other coronavirus genomes as a reference.
 
