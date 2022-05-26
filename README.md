@@ -1,8 +1,9 @@
-# LeTRS
+<p align="left">
+<img src="/image.png" width="200" height="100">
+</p>
+LeTRS was implemented in Perl programming language, including a main script for identification of leader-TRS junctions and a script for plotting graphs of the results. 
 
-LeTRS was implemented in the Perl programming language, including a main script for the identification of leader-TRS junctions (LeTRS.pl) and a script for plotting the outputs (LeTRS-plot.pl) 
-
-LeTRS accepts fastq files derived from Illumina paired-end and Nanopore amplicon/direct RNA sequencing, and bam files produced by a splicing alignment method with a SARS-CoV-2 genome. By default, LeTRS analyses SARS-CoV-2 by using 10 known leader-TRS junctions and an NCBI reference genome (NC_045512.2), but the user can also provide customized leader-TRS junctions and SARS-CoV-2 or other coronavirus genomes as a reference.
+It accepts fastq files derived from Illumina (single-end or paired-end) and Nanopore amplicon/direct RNA sequencing, and bam files produced by a splicing alignment method with a SARS-CoV-2 genome. By default, LeTRS analyses SARS-CoV-2 by using 10 known leader-TRS junctions and an NCBI reference genome (NC_045512.2), but the user can also provide customized leader-TRS junctions and SARS-CoV-2 or other coronavirus genomes as a reference.
 
 ## Installation:
 **1. Create an environment with one step**
@@ -15,11 +16,11 @@ source activate LeTRS
 **2. Create an environment step by step**
 
 Third party dependencies:
-  > [samtools](http://www.htslib.org/)(>=1.11)
+  > samtools(>=1.11)
   > 
-  > [hisat2](http://daehwankimlab.github.io/hisat2/)(=2.1.0)
+  > hisat2(=2.1.0)
   > 
-  > [minimap2](https://github.com/lh3/minimap2)(=2.17)
+  > minimap2(=2.17)
   > 
   > [portcullis](https://github.com/maplesond/portcullis)(>=1.1.2)
 
@@ -112,12 +113,17 @@ Use SARS-CoV-2 or other coronavirus genomes as a reference, and extract the read
 perl LeTRS.pl -t 16 -extractfasta -Rtch cDNA -mode nanopore -fq example.fastq.gz -primer_bed path_to_custom_primer.bed -o LeTRS_output -ref reference_folder
 ```
 
-**3. Paired-end Illumina sequencing data**
+**3. Illumina sequencing data**
 
 Extracts the read-pairs containing the identified leader-TRS junctions in fasta format for pool 1 and pool 2 of amplicon primers (the ARTIC primer_bed can be found in the "primer_bed" folder):
 
 ```
 perl LeTRS.pl -t 16 -extractfasta -pool 0 -mode illumina -fq #1.fastq.gz:#2.fastq.gz -primer_bed path_to_primer_V3.bed -o LeTRS_output
+```
+LeTRS also supports single-end Illumina sequencing data:
+
+```
+perl LeTRS.pl -t 16 -extractfasta -pool 0 -mode illumina -fq fastq.gz -primer_bed path_to_primer_V3.bed -o LeTRS_output
 ```
 
 Optional: To analyse customized bam file reads derived from any platform aligned by using a splicing mapping method.
@@ -169,5 +175,6 @@ There is also a perl script that can plot a diagram for the output of LeTRS.pl.
 Please the see the "readme.txt" file in the "making_reference_folder_example" folder.
 
 ## Citation 
-Xiaofeng Dong, Rebekah Penrice-Randal, Hannah Goldswain, Tessa Prince, Nadine Randle, Javier Salguero, Julia Tree, Ecaterina Vamos, Charlotte Nelson, James P. Stewart, ISARIC4C Investigators, COVID-19 Genomics UK (COG-UK) Consortium, Malcolm G. Semple, J. Kenneth Baillie, Peter J. M. Openshaw, Lance Turtle, David A. Matthews, Miles W. Carroll, Alistair C. Darby, Julian A. Hiscox. bioRxiv 2021.03.03.433753; doi: https://doi.org/10.1101/2021.03.03.433753 
+Xiaofeng Dong, Rebekah Penrice-Randal, Hannah Goldswain, Tessa Prince, Nadine Randle, I'ah Donovan-Banfield, Francisco J. Salguero, Julia Tree, Ecaterina Vamos, Charlotte Nelson, Jordan Clark, Yan Ryan, James P. Stewart, Malcolm G. Semple J. Kenneth Baillie, Peter J. M. Openshaw, Lance Turtle, David A. Matthews, Miles W. Carroll, Alistair C. Darby and Julian A. Hiscox. Analysis of SARS-CoV-2 known and novel subgenomic mRNAs in cell culture, animal model, and clinical samples using LeTRS, a bioinformatic tool to identify unique sequence identifiers. GigaScience 2022 DOI: 10.1093/gigascience/giac045
+
 
