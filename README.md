@@ -16,11 +16,11 @@ source activate LeTRS
 **2. Create an environment step by step**
 
 Third party dependencies:
-  > samtools(>=1.11)
+  > [samtools](http://www.htslib.org/)(>=1.11)
   > 
-  > hisat2(=2.1.0)
+  > [hisat2](http://daehwankimlab.github.io/hisat2/)(=2.1.0)
   > 
-  > minimap2(=2.17)
+  > [minimap2](https://github.com/lh3/minimap2)(=2.17)
   > 
   > [portcullis](https://github.com/maplesond/portcullis)(>=1.1.2)
 
