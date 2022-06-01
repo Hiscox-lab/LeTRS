@@ -112,7 +112,7 @@ if ($chackbam==0 and $chackfa==0) {
 
 my $pathtoreference;
 if (!exists ($options{'ref'})) {
-    $pathtoreference="$selfpath/references_sars_covid_2";
+    $pathtoreference="$selfpath/references-sars-cov-2";
 }elsif(exists ($options{'ref'})) {
     $pathtoreference="$options{'ref'}";
 }
