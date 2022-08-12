@@ -78,7 +78,7 @@ Optional options:
 }
 
 if ($options{'version'}) {
-    print "v2.1.1\n";
+    print "v2.2.1\n";
     exit;
 }
 
